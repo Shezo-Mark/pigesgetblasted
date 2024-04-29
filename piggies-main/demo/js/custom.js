@@ -74,3 +74,29 @@ $(document).ready(function(){
     });
 });
 
+
+
+
+/* toseeq razzaq */
+
+$('.select-dropdown__button').on('click', function(){
+    // $('.select-dropdown__list').removeClass('active');
+
+    if($(this).next('.select-dropdown__list.active').length){
+        $(this).next('.select-dropdown__list').removeClass('active');
+    }else{
+        $('.select-dropdown__list').removeClass('active');  
+        $(this).next('.select-dropdown__list').addClass('active');
+    }
+});
+
+// Handle selection in dropdown list
+$('.select-dropdown__list-item').on('click', function(){
+    var itemValue = $(this).data('value');
+    var dropdown = $(this).closest('.select-dropdown');
+    
+    console.log(itemValue);
+    
+    dropdown.find('.select-dropdown__button span').text($(this).text()).end().attr('data-value', itemValue);
+    dropdown.find('.select-dropdown__list').toggleClass('active');
+});
